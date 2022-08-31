@@ -1,10 +1,6 @@
 import { defineConfig } from "vite"
-import prefresh from "@prefresh/vite"
+import solidPlugin from "vite-plugin-solid"
 
 export default defineConfig({
-  plugins: [prefresh()],
-  esbuild: {
-    jsx: "automatic",
-    jsxImportSource: "preact",
-  },
+  plugins: [solidPlugin()],
 })
