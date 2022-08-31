@@ -12,6 +12,7 @@ const Dot: Component<{ class?: string }> = ({ class: className }) => {
 
 export const App = () => {
   const features = [
+    "Live preview, automatically refresh on change",
     "GitHub-flavoured Markdown support",
     "Quick navigation with Table of Contents",
     "Open rendered HTML in default browser",
