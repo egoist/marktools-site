@@ -1,5 +1,5 @@
-import "./main.css";
-import { render } from "solid-js/web";
-import { App } from "./App";
+import "./main.css"
+import { render } from "preact"
+import { App } from "./App"
 
-render(() => <App />, document.getElementById("app")!);
+render(<App />, document.getElementById("app")!)

@@ -1,8 +1,9 @@
-import { Component, createSignal, For, onMount, Show } from "solid-js"
 import clsx from "clsx"
+import { FunctionComponent } from "preact"
+import { useEffect, useState } from "preact/hooks"
 import preview from "./images/1.jpg"
 
-const Dot: Component<{ class?: string }> = ({ class: className }) => {
+const Dot: FunctionComponent<{ class?: string }> = ({ class: className }) => {
   return (
     <span
       class={clsx("inline-block w-3 h-3 rounded-full border", className)}
@@ -23,25 +24,22 @@ export const App = () => {
     "Render math expressions (soon)",
   ]
 
-  const [asset, setAsset] = createSignal<{ name: string; url: string } | null>(
-    null
-  )
-  const [version, setVersion] = createSignal<string | null>(null)
+  const [asset, setAsset] = useState<{ name: string; url: string } | null>(null)
+  const [version, setVersion] = useState<string | null>(null)
 
   const download = () => {
-    const assetValue = asset()
-    if (!assetValue) {
+    if (!asset) {
       return
     }
     location.href = `https://updater.egoist.dev/download-asset?${new URLSearchParams(
       {
-        asset: assetValue.url,
-        filename: assetValue.name,
+        asset: asset.url,
+        filename: asset.name,
       }
     )}`
   }
 
-  onMount(async () => {
+  const getRelease = async () => {
     const release = await fetch(
       "https://updater.egoist.dev/egoist/marktools/latest",
       {
@@ -51,7 +49,11 @@ export const App = () => {
     const asset = release.assets.find((a: any) => a.name.includes(".dmg"))
     setAsset(asset)
     setVersion(release.tag_name)
-  })
+  }
+
+  useEffect(() => {
+    getRelease()
+  }, [])
 
   return (
     <div>
@@ -67,9 +69,9 @@ export const App = () => {
                 type="button"
                 class="border rounded-full h-10 inline-flex items-center px-5 bg-indigo-500 border-indigo-500 transition-shadow text-white hover:shadow-lg disabled:cursor-progress"
                 onClick={download}
-                disabled={!asset()}
+                disabled={!asset}
               >
-                Download for Mac <Show when={version()}>({version})</Show>
+                Download for Mac {version && <span>({version})</span>}
               </button>
               <a
                 href="https://github.com/egoist/marktools-feedback/discussions"
@@ -107,11 +109,13 @@ export const App = () => {
           <h2 class="text-3xl font-bold mt-1">All features</h2>
           <div class="mt-5">
             <div class="bg-zinc-100 rounded-lg overflow-hidden">
-              <For each={features}>
-                {(feature) => {
-                  return <div class="px-3 py-2 even:bg-zinc-200">{feature}</div>
-                }}
-              </For>
+              {features.map((feature) => {
+                return (
+                  <div class="px-3 py-2 even:bg-zinc-200" key={feature}>
+                    {feature}
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
