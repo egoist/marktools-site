@@ -19,7 +19,7 @@ export const App = () => {
     "Export Markdown to PDF",
     "Pin / Unpin window",
     "Syntax highlighting for code blocks",
-    "Link checker (for broken links, coming soon)",
+    "Link checker (for broken links)",
     "Render math expressions (soon)",
   ]
 
