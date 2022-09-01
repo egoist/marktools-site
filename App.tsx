@@ -58,14 +58,14 @@ export const App = () => {
       <header class="py-10">
         <div class="container">
           <div>
-            <h1 class="text-7xl font-bold">Marktools</h1>
-            <h1 class="text-6xl font-medium mt-1 text-zinc-400">
+            <h1 class="text-4xl md:text-7xl font-bold">Marktools</h1>
+            <h1 class="text-2xl md:text-6xl font-medium mt-1 text-zinc-400">
               Smart markdown preview
             </h1>
-            <div class="mt-10 space-x-2">
+            <div class="mt-10 space-y-2 flex flex-col sm:flex-row sm:space-y-0 sm:space-x-2">
               <button
                 type="button"
-                class="border rounded-full h-10 inline-flex items-center px-5 bg-indigo-500 border-indigo-500 transition-shadow text-white hover:shadow-lg disabled:cursor-progress"
+                class="border rounded-full h-10 inline-flex justify-center items-center px-5 bg-indigo-500 border-indigo-500 transition-shadow text-white hover:shadow-lg disabled:cursor-progress"
                 onClick={download}
                 disabled={!asset()}
               >
@@ -74,7 +74,7 @@ export const App = () => {
               <a
                 href="https://github.com/egoist/marktools-feedback/discussions"
                 target="_blank"
-                class="border rounded-full h-10 inline-flex items-center px-5 bg-zinc-100 border-zinc-200 text-zinc-500  hover:shadow-lg transition-shadow"
+                class="border rounded-full h-10 inline-flex justify-center items-center px-5 bg-zinc-100 border-zinc-200 text-zinc-500  hover:shadow-lg transition-shadow"
               >
                 Feedback
               </a>
