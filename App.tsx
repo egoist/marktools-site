@@ -62,21 +62,45 @@ export const App = () => {
             <h1 class="text-2xl md:text-6xl font-medium mt-1 text-zinc-400">
               Smart markdown preview
             </h1>
-            <div class="mt-10 space-y-2 flex flex-col sm:flex-row sm:space-y-0 sm:space-x-2">
-              <button
-                type="button"
-                class="border rounded-full h-10 inline-flex justify-center items-center px-5 bg-indigo-500 border-indigo-500 transition-shadow text-white hover:shadow-lg disabled:cursor-progress"
-                onClick={download}
-                disabled={!asset()}
-              >
-                Download for Mac <Show when={version()}>({version})</Show>
-              </button>
+            <div class="mt-10 flex flex-col space-y-2 sm:space-y-0 sm:flex-row justify-between items-center">
+              <div class="w-full sm:w-auto flex space-y-2 flex-col sm:flex-row sm:space-y-0 sm:space-x-2">
+                <button
+                  type="button"
+                  class="w-full border rounded-full h-10 inline-flex justify-center items-center px-5 bg-indigo-500 border-indigo-500 transition-shadow text-white hover:shadow-lg disabled:cursor-progress"
+                  onClick={download}
+                  disabled={!asset()}
+                >
+                  Download for Mac <Show when={version()}>({version})</Show>
+                </button>
+                <a
+                  href="https://github.com/egoist/marktools-feedback/discussions"
+                  target="_blank"
+                  class="w-full sm:w-auto border rounded-full h-10 inline-flex justify-center items-center px-5 bg-zinc-100 border-zinc-200 text-zinc-500  hover:shadow-lg transition-shadow"
+                >
+                  Feedback
+                </a>
+              </div>
               <a
-                href="https://github.com/egoist/marktools-feedback/discussions"
+                href="https://store.egoist.dev/l/marktools"
                 target="_blank"
-                class="border rounded-full h-10 inline-flex justify-center items-center px-5 bg-zinc-100 border-zinc-200 text-zinc-500  hover:shadow-lg transition-shadow"
+                rel="nofollow noopener"
+                class="inline-flex space-x-2 items-center underline underline-offset-2 hover:text-indigo-500"
               >
-                Feedback
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
+                  />
+                </svg>
+                <span>Buy a license</span>
               </a>
             </div>
           </div>
