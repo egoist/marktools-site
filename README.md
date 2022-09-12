@@ -1,1 +1,1 @@
-https://marktools.egoost.dev
+https://marktools.egoist.dev
